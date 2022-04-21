@@ -1,10 +1,12 @@
-const { dir } = require("console");
 const express = require("express");
+const req = require("express/lib/request");
+const res = require("express/lib/response");
 const path = require("path");
 const app = express();
 app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded());
 
 const pokedex = [
   {
@@ -31,11 +33,27 @@ const pokedex = [
     tipo: "Bug",
     imagem: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/012.png",
   },
+  {
+    id: 004,
+    nome: "Nidorino",
+    descricao:
+      "With a horn that’s harder than diamond, this Pokémon goes around shattering boulders as it searches for a moon stone",
+    tipo: "Poison",
+    imagem: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/033.png",
+  }
 ];
 
 //Rotas
 app.get("/", (req, res) => {
-  res.render("index", {pokedex});
+  res.render("index", { pokedex });
+});
+
+app.post("/add", (req, res) => {
+  const pokemon = req.body;
+  pokedex.push(pokemon)
+  
+  res.redirect("/");
+  
 });
 
 app.listen(3000, () =>
