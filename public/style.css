@@ -6,6 +6,9 @@
     font-family: Josefins+sans, arial;
     scroll-behavior: smooth;
 }
+body{
+    background-color: #e9dcdf;
+}
 nav{
    position: fixed; 
    background-color: #c73737;
