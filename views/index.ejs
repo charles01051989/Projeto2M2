@@ -6,13 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     <title>Document</title>
 </head>
 
 <body>
-    <header>
-        <h1>POKEDEX</h1>
-    </header>
+    <nav>
+        <ul>
+            <li>
+
+                <a href="/">
+                    <h1>POKEDEX</h1>
+                </a>
+
+            </li>
+            <li><a href="#cadastro">Cadastro</a></li>
+            <li><a href="#cards">Pokemons</a></li>
+
+        </ul>
+    </nav>
 
     <main>
 
@@ -24,48 +36,97 @@
                 <% if (pokemon==undefined) { %>
 
                     <h2>Cadastre um novo Pokemon!</h2>
-    
+
                     <form action="/create" method="post">
-    
+
                         <label for="nome">Nome:</label>
                         <input type="text" id="nome" name="nome">
-    
+
                         <label for="descricao">Descrição:</label>
                         <input type="text" id="descricao" name="descricao">
-    
+
                         <label for="tipo">Tipo:</label>
                         <input type="text" id="tipo" name="tipo">
-    
+
                         <label for="imagem">Link da imagem:</label>
                         <input type="text" id="imagem" name="imagem">
-    
-                        <button id="btnCadastrar" type="submit">Cadastrar</button>
+
+                        <label for="altura">Altura:</label>
+                        <input type="text" id="altura" name="altura">
+
+                        <label for="peso">Peso:</label>
+                        <input type="text" id="peso" name="peso">
+
+                        <label for="categoria">Categoria:</label>
+                        <input type="text" id="categoria" name="categoria">
+
+                        <label for="habilidade">Habilidade:</label>
+                        <input type="text" id="hablidade" name="habilidade">
+
+                        <button onclick="cadastro()" type="submit">Cadastrar</button>
+                        <span id="ok"></span>
+
+                     
                     </form>
                     <% } else { %>
-    
+
                         <h2>Atualização do Pokemon!</h2>
-    
-    
+
+                        <div class="cardD">
+                            <img src="<%= pokemon.imagem %>" alt=""></a>
+                            <h3>
+                                <%= pokemon.nome %>
+                            </h3>
+                            <p class="descricao">
+                                <%= pokemon.descricao%>
+                            </p>
+                            <p>Tipo: <%= pokemon.tipo %>
+                            </p>
+                            <p>Altura: <%= pokemon.altura %>
+                            </p>
+                            <p>Peso: <%= pokemon.peso %>
+                            </p>
+                            <p>Categoria: <%= pokemon.categoria %>
+                            </p>
+                            <p>Habilidade: <%= pokemon.habilidade %>
+                            </p>
+
+                        </div>
+
                         <form action="/update/<%= pokemon.id %>" method="post">
-    
+
                             <label for="nome">Nome:</label>
                             <input type="text" id="nome" name="nome" value="<%= pokemon.nome %>">
-    
+
                             <label for="descricao">Descrição:</label>
                             <input type="text" id="descricao" name="descricao" value="<%= pokemon.descricao %>">
-    
+
                             <label for="tipo">Tipo:</label>
                             <input type="text" id="tipo" name="tipo" value="<%= pokemon.tipo %>">
-    
+
                             <label for="imagem">Link da imagem:</label>
                             <input type="text" id="imagem" name="imagem" value="<%= pokemon.imagem %>">
-    
+
+                            <label for="altura">Altura:</label>
+                            <input type="text" id="altura" name="altura" value="<%=pokemon.altura %>">
+
+                            <label for="peso">Peso:</label>
+                            <input type="text" id="peso" name="peso" value="<%=pokemon.peso%>">
+
+                            <label for="categoria">Categoria:</label>
+                            <input type="text" id="categoria" name="categoria" value="<%=pokemon.categoria%>">
+
+                            <label for="habilidade">Habilidade:</label>
+                            <input type="text" id="hablidade" name="habilidade" value="<%=pokemon.habilidade%>">
+
                             <button id="btnAtualizar" type="submit">Atualizar</button>
+
                         </form>
                         <% } %>
+
             </div>
 
-            
+
         </section>
 
         <section id="cards">
@@ -75,7 +136,7 @@
             <% pokedex.forEach((pokemon)=> { %>
 
                 <div class="card">
-                    <img src="<%= pokemon.imagem %>" alt="">
+                    <a href="/infos/<%= pokemon.id %>"><img src="<%= pokemon.imagem %>" alt=""></a>
                     <h3>
                         <%= pokemon.nome %>
                     </h3>
@@ -84,12 +145,18 @@
                     </p>
                     <p>Tipo: <%= pokemon.tipo %>
                     </p>
-                    <a href="/detalhes/<%= pokemon.id %>">Editar</a>
+                    <!-- <a id="editar" href="/detalhes/<%= pokemon.id %>" class="editar">Editar</a>
+                     -->
                 </div>
                 <% }) %>
         </section>
-        
+
+
     </main>
+    <footer>
+        <p>Todos os direitos reservados para Charles Marques</p>
+    </footer>
+
 
 </body>
 

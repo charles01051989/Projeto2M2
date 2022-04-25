@@ -4,12 +4,33 @@
     margin: 0;
     padding: 0;
     font-family: Josefins+sans, arial;
+    scroll-behavior: smooth;
 }
-header{
-    padding: 3rem;
-    background-color: red;
+nav{
+   position: fixed; 
+   background-color: #c73737;
+   width: 100%;
+   transition: transform 0.5s;
 }
-header h1{
+nav:hover{
+    transform: scale(1.1);
+}
+nav ul{
+    margin-left: 2.7rem;
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+nav ul li {
+    padding: 0.6rem;
+    text-decoration: none;
+    color: antiquewhite;
+}
+nav ul li a{
+    text-decoration: none;
+    color: antiquewhite;
+}
+nav h1{
     color: beige;
     font-size: 3rem;
     text-align: center;
@@ -21,14 +42,14 @@ main{
 section#cards{
     display: flex;
     justify-content: space-evenly;
-    flex-wrap: wrap;
-    margin-top: 0rem;
+    flex-wrap: wrap;   
 }
 section#cards div.card{
     width: 12rem;
     box-shadow: 10px 5px 5px #00000015;
     padding: 1rem;
     margin: 3rem 0 5rem 0;
+    transition: transform 0.5s;
 }
 
 section#cards h2{
@@ -36,14 +57,13 @@ section#cards h2{
     text-align: center;
 }
 
-section#cards div.card img{
-    width: 100%;
+section#cards div.card a img{
+    width: 100%;    
 }
 section#cards div.card h3{
     margin-bottom: 1rem;
 }
-
-section#cards div.card a{
+section#cards div.card a#editar{
     padding: .6rem;
     width: 20%;
     display: flex;
@@ -56,14 +76,35 @@ section#cards div.card a{
     cursor: pointer;
     transition: all .2s ease-in-out;
     text-decoration: none;
-    margin-top: 2rem;
+    margin-top: 1rem;
+}
+section#cards div.card a#delete{
+    padding: .6rem;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 1rem;
+    background-color: antiquewhite;
+    border: solid 1px #c73737;
+    color: #c73737;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    text-decoration: none;
+    margin-top: 1rem;
 }
 
-section#cards div.card a:hover{
+section#cards div.card #editar:hover{
     background-color: rgb(74, 49, 218);
     color: antiquewhite;
 }
-
+section#cards div.card #delete:hover{
+    background-color: #c73737;
+    color: antiquewhite;
+}
+section#cards div.card:hover{
+    transform: scale(1.2);
+}
 section#cards div.card p.descricao {
     margin-bottom: 1rem;
 }
@@ -74,6 +115,7 @@ section#cadastro{
 }
 
 section#cadastro img{
+
     width: 100%;
 }
 
@@ -87,15 +129,16 @@ section#cadastro form{
 }
 section#cadastro form input{
     width: 100%;
-    padding: .8rem;
+    padding: .4rem;
     border: solid 2px rgb(150, 146, 146);
-    margin: 0 1rem 1rem 1rem;
+    margin: 0rem;
 }
 section#cadastro form label {
     margin: 1rem;
     color: rgb(150, 146, 146);
 }
 section#cadastro form button{
+    margin-top: 1rem;
     padding: .6rem;
     width: 20%;
     display: flex;
@@ -111,4 +154,13 @@ section#cadastro form button{
 section#cadastro form button:hover{
     background-color: red;
     color: antiquewhite;
+}
+span#ok{
+    color: rgb(25, 236, 25);
+    text-align: center;
+    font-size: 2rem;
+}
+footer{
+    background-color: #c73737;
+    padding: 1rem;
 }
