@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const req = require("express/lib/request");
 const res = require("express/lib/response");
