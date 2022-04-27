@@ -8,8 +8,8 @@ app.set("view engine", "ejs");
 const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded());
-
-const pokedex = [
+let pokemon = undefined;
+const pokedexList = [
   {
     id: 1,
     nome: "Bulbassaur",
@@ -59,39 +59,39 @@ const pokedex = [
     habilidade: "Poison Point/Rivalry",
   },
 ];
-let pokemon = undefined;
+
 //Rotas
 app.get("/", (req, res) => {
-  res.render("index", { pokedex, pokemon });
+  res.render("index", { pokedexList, pokemon });
 });
 app.post("/create", (req, res) => {
   const pokemon = req.body;
-  pokemon.id = pokedex.length + 1;
-  pokedex.push(pokemon);
-  res.redirect("/#cards");
-});
-app.get("/detalhes/:id", (req, res) => {
-  const id = +req.params.id;
-  pokemon = pokedex.find((pokemon) => pokemon.id === id);
-  res.redirect("/#cadastro");
-});
-app.post("/update/:id", (req, res) => {
-  const id = +req.params.id - 1;
-  const newPokemon = req.body;
-  newPokemon.id = id + 1;
-  pokedex[id] = newPokemon;
-  pokemon = undefined;
-  res.redirect("/#cards");
+  pokemon.id = pokedexList.length + 1;
+  pokedexList.push(pokemon);
+  res.redirect("/");
 });
 app.get("/infos/:id", (req, res) => {
   const id = +req.params.id;
-  pokemon = pokedex.find((pokemon) => pokemon.id === id);
-  res.redirect("/#cadastro");
+  pokemon = pokedexList.find((pokemon) => pokemon.id === id);
+  res.redirect("/");
 });
+app.post("/update/:id", (req, res) => {
+  const id = +req.params.id - 1;
+  const cadPokemon = req.body;
+  cadPokemon.id = id + 1;
+  pokedexList[id] = cadPokemon;
+  pokemon = undefined;
+  res.redirect("/");
+});
+// app.get("/infos/:id", (req, res) => {
+//   const id = +req.params.id;
+//   pokemon = pokedexList.find((pokemon) => pokemon.id === id);
+//   res.redirect("/");
+// });
 app.get("/delete/:id", (req, res) => {
   const id = +req.params.id-1;
-  delete pokedex[id];
-  res.redirect("/#cards");
+  delete pokedexList[id];
+  res.redirect("/");
 });
 app.listen(3000, () =>
   console.log("Servidor rodando em http://localhost:3000 ")

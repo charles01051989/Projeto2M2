@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
-    
   },
   "repository": {
     "type": "git",
@@ -19,9 +18,9 @@
   },
   "homepage": "https://github.com/charles01051989/pokedex-mvc#readme",
   "dependencies": {
+    "dotenv": "^16.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
     "nodemon": "^2.0.15"
-  },
-  "devDependencies": {}
+  }
 }
