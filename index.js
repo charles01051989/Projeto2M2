@@ -72,8 +72,8 @@ app.post("/newP", (req, res) => {
 });
 app.get("/infP/:id", (req, res) => {
   const id = +req.params.id;
-  // pokemon = pokedexList.find((pokemon) => pokemon.id === id)
-  pokemon = pokedexList.at(id-1)
+  pokemon = pokedexList.find((pokemon) => pokemon.id === id)
+  // pokemon = pokedexList.at(id-1)
   res.redirect("/");
 });
 app.post("/upP/:id", (req, res) => {
