@@ -51,13 +51,14 @@ section#cards div.card {
   width: 12rem;
   box-shadow: 10px 5px 5px #00000015;
   padding: 1rem;
-  margin: 3rem 0 5rem 0;
+  margin: 2rem 0 5rem 0;
   transition: transform 0.5s;
 }
 
 section#cards h2 {
   width: 100%;
   text-align: center;
+  margin-top: -2rem;
 }
 
 section#cards div.card a img {
@@ -118,11 +119,6 @@ section#cadastro {
   padding: 5rem;
   flex-wrap: wrap;
 }
-
-/* section#cadastro img {
-  width: 100%;
-} */
-
 section#cadastro h2 {
   width: 100%;
   text-align: center;
@@ -173,11 +169,10 @@ section#cadastro div.cardD {
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
- section#cadastro div.cardD img {
-width: 50%;
+
+section#cadastro div.carD h3 {
+  font-size: 2rem;
+  padding: 2rem;
+  text-align: center;
 }
-section#cadastro div.carD h3{
-font-size: 2rem;
-padding: 2rem;
-text-align: center;
-}
+
